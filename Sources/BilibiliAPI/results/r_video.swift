@@ -1,3 +1,5 @@
+import JQWrapper
+
 // 视频的相关视频
 struct VideoRelatedVideosResult: APIResultContainer, ExtractableWithJQ {
     typealias Query = VideoRelatedVideosQuery

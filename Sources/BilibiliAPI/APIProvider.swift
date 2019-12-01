@@ -27,7 +27,7 @@ public enum APIProviderError: Error {
     case clientInfoBuildNumberMismatched
 }
 
-public struct APIProvider {
+public class APIProvider {
     let fallbackKeys: APIKeys?
     var clientInfos = [APISpec.PreferredClientType: [ClientInfo]]()
 
@@ -35,7 +35,7 @@ public struct APIProvider {
         self.fallbackKeys = fallbackKeys
     }
     
-    public mutating func addClientInfo(for type: APISpec.PreferredClientType,
+    public func addClientInfo(for type: APISpec.PreferredClientType,
                                        _ info: ClientInfo, ignoresCheck: Bool = false) throws {
         // check
         if !ignoresCheck {

@@ -1,3 +1,5 @@
+import JQWrapper
+
 // 标签页信息+按时间排序视频
 struct TagDetailResult: APIResultContainer, ExtractableWithJQ {
     typealias Query = TagDetailQuery

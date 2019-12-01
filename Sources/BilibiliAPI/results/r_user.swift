@@ -1,3 +1,5 @@
+import JQWrapper
+
 // 用户投稿
 struct UserSubmissionsResult: APIResultContainer, ExtractableWithJQ {
     typealias Query = UserSubmissionsQuery

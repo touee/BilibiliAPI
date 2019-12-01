@@ -1,3 +1,5 @@
+import JQWrapper
+
 // 搜索
 struct SearchResult: APIResultContainer, ExtractableWithJQ {
     typealias Query = SearchQuery

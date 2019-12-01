@@ -1,6 +1,8 @@
+import JQWrapper
+
 // 收藏夹中的视频
 struct FavoriteFolderVideosResult: APIResultContainer, ExtractableWithJQ {
-    typealias Query = UserFavoriteFolderQuery
+    typealias Query = FavoriteFolderVideosQuery
     
     let result: Result
     struct Result: APIResult {

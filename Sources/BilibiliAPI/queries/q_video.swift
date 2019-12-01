@@ -12,7 +12,7 @@ public struct VideoInfoQuery: APIQuery, APIQueryWithAID {
     }
     
     public static var endpoint = buildEndpoint("app", "/x/v2/view")
-    public static var spec = APISpec.forMobile(requiresKeys: false)
+    public static var spec = APISpec.forMobile(requiresKeys: true)
     public func buildQueryItems() -> [URLQueryItem] {
         return buildQueryItemArray(from: [
             (name: "aid", value: String(aid)),
