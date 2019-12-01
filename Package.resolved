@@ -9,6 +9,15 @@
           "revision": "12d2bf3ec7207ec3cd004b9582f69ef5fae1da3b",
           "version": "1.0.32"
         }
+      },
+      {
+        "package": "JQWrapper",
+        "repositoryURL": "https://github.com/touee/swift-jq-wrapper.git",
+        "state": {
+          "branch": null,
+          "revision": "1469e4107110075a72b14e60680ebfca2949c5a5",
+          "version": "0.0.4"
+        }
       }
     ]
   },
