@@ -1,22 +1,26 @@
 import JQWrapper
 
 // 标签页信息+按时间排序视频
-struct TagDetailResult: APIResultContainer, ExtractableWithJQ {
-    typealias Query = TagDetailQuery
+public struct TagDetailResult: APIResultContainer, ExtractableWithJQ {
+    public typealias Query = TagDetailQuery
     
-    let result: Result
-    struct Result: APIResult {
-        let info: GeneralTagItem
-        let similar_tags: [SimilarTagItem]
-        let videos: [GeneralVideoItem]
+    public let result: Result
+    public struct Result: APIResult {
+        public let info: GeneralTagItem
+        public let similar_tags: [SimilarTagItem]
+        public let videos: [GeneralVideoItem]
     }
     
-    struct SimilarTagItem: Codable {
+    public struct SimilarTagItem: Codable {
         let tid: UInt64
         let name :String
     }
     
-    static let transformer: JQ? = try! JQ(query: #"""
+    public init(result: Result) {
+        self.result = result
+    }
+    
+    public static let transformer: JQ? = try! JQ(query: #"""
         .data | {
             info: .info | \#(String(format: generalTagItemJSONQueryTemplate, "tag_id", "tag_name", "", "state")),
             similar_tags: [.similar[]? | { tid, name: .tname }],
@@ -26,13 +30,17 @@ struct TagDetailResult: APIResultContainer, ExtractableWithJQ {
 }
 
 // 标签页按默认排序视频
-struct TagTopResult: APIResultContainer, ExtractableWithJQ {
-    typealias Query = TagTopQuery
+public struct TagTopResult: APIResultContainer, ExtractableWithJQ {
+    public typealias Query = TagTopQuery
     
-    let result: Result
-    typealias Result = [GeneralVideoItem]
+    public let result: Result
+    public typealias Result = [GeneralVideoItem]
 
-    static let transformer: JQ? = try! JQ(query: #"""
+    public init(result: Result) {
+        self.result = result
+    }
+    
+    public static let transformer: JQ? = try! JQ(query: #"""
         [ .data[]? | \#(String(format: generalVideoItemJSONQueryTemplate, "", ""))]
         """#, usesLock: true)
 }

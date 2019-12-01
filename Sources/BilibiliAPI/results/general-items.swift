@@ -1,40 +1,40 @@
-class GeneralVideoItem: Codable {
-    struct VideoStats: Codable {
-        let views: Int
-        let danmakus: Int
-        let replies: Int
-        let favorites: Int
-        let coins: Int
-        let shares: Int
-        let current_rank: Int
-        let highest_rank: Int
-        let likes: Int
-        let dislikes: Int
-        let remained_raw: String?
+public class GeneralVideoItem: Codable {
+    public struct VideoStats: Codable {
+        public let views: Int
+        public let danmakus: Int
+        public let replies: Int
+        public let favorites: Int
+        public let coins: Int
+        public let shares: Int
+        public let current_rank: Int
+        public let highest_rank: Int
+        public let likes: Int
+        public let dislikes: Int
+        public let remained_raw: String?
     }
-    struct VideoTimes: Codable {
-        let pub: Int64
-        let c: Int64
+    public struct VideoTimes: Codable {
+        public let pub: Int64
+        public let c: Int64
     }
-    let aid: UInt64
-    let parts: Int
-    let subregion_id: Int
-    let subregion_name: String
-    let ownership: Int
-    let cover_url: String
-    let title: String
-    let times: VideoTimes
-    let description: String
-    let duration: Int
-    let uploader_name: String
-    let uploader_uid: UInt64
-    let uploader_profile_image_url: String
-    let cid: UInt64?
-    let state: Int
-    let stats: VideoStats
-    let other_interesting_stuff: String // state attribute rights stat dimension
+    public let aid: UInt64
+    public let parts: Int
+    public let subregion_id: Int
+    public let subregion_name: String
+    public let ownership: Int
+    public let cover_url: String
+    public let title: String
+    public let times: VideoTimes
+    public let description: String
+    public let duration: Int
+    public let uploader_name: String
+    public let uploader_uid: UInt64
+    public let uploader_profile_image_url: String
+    public let cid: UInt64?
+    public let state: Int
+    public let stats: VideoStats
+    public let other_interesting_stuff: String // state attribute rights stat dimension
 }
-let generalVideoItemJSONQueryTemplate = #"""
+public let generalVideoItemJSONQueryTemplate = #"""
     {
         aid, parts: .videos, subregion_id: .tid, subregion_name: .tname,
         ownership: .copyright, cover_url: .pic, title,
@@ -54,18 +54,18 @@ let generalVideoItemJSONQueryTemplate = #"""
     }
     """#
 
-class GeneralTagItem: Codable {
-    let tid: UInt64
-    let name: String
-    let type: Int
-    let cover_url: String // empty ok
-    let head_cover_url: String // empty ok
-    let description: String // empty ok
-    let short_description: String // empty ok
-    let c_time: Int64
-    let other_interesting_stuff: String // type, count
+public class GeneralTagItem: Codable {
+    public let tid: UInt64
+    public let name: String
+    public let type: Int
+    public let cover_url: String // empty ok
+    public let head_cover_url: String // empty ok
+    public let description: String // empty ok
+    public let short_description: String // empty ok
+    public let c_time: Int64
+    public let other_interesting_stuff: String // type, count
 }
-let generalTagItemJSONQueryTemplate = #"""
+public let generalTagItemJSONQueryTemplate = #"""
     {
         tid: .%@, name: .%@, type, cover_url: .cover,
         head_cover_url: .head_cover, description: .content,

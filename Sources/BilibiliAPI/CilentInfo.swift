@@ -1,14 +1,23 @@
 import Foundation
 
 public struct ClientInfo {
-    let build: Int?
-    let device: String?
-    let mobiApp: String?
-    let platform: String?
+    public let build: Int?
+    public let device: String?
+    public let mobiApp: String?
+    public let platform: String?
 
-    let userAgent: String?
+    public let userAgent: String?
     
-    let keys: APIKeys?
+    public let keys: APIKeys?
+    
+    init(build: Int?, device: String?, mobiApp: String?, platform: String?, userAgent: String?, keys: APIKeys?) {
+        self.build = build
+        self.device = device
+        self.mobiApp = mobiApp
+        self.platform = platform
+        self.userAgent = userAgent
+        self.keys = keys
+    }
 
     public var queryItems: [URLQueryItem] {
         return buildQueryItemArray(from: [

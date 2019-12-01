@@ -1,28 +1,32 @@
 import JQWrapper
 
 // 搜索
-struct SearchResult: APIResultContainer, ExtractableWithJQ {
-    typealias Query = SearchQuery
+public struct SearchResult: APIResultContainer, ExtractableWithJQ {
+    public typealias Query = SearchQuery
     
-    let result: Result
-    struct Result: APIResult {
-        let items: [VideoItem]
+    public let result: Result
+    public struct Result: APIResult {
+        public let items: [VideoItem]
     }
 
-    struct VideoItem: Codable {
-        let title: String
-        let cover_url: String
-        let aid: UInt64
-        let view_count: Int
-        let danmaku_count: Int
-        let uploader_name: String
-        let uploader_uid: UInt64
-        let uploader_profile_image_url: String
-        let description: String?
-        let duration_text: String
+    public struct VideoItem: Codable {
+        public let title: String
+        public let cover_url: String
+        public let aid: UInt64
+        public let view_count: Int
+        public let danmaku_count: Int
+        public let uploader_name: String
+        public let uploader_uid: UInt64
+        public let uploader_profile_image_url: String
+        public let description: String?
+        public let duration_text: String
     }
     
-    static let transformer: JQ? = try! JQ(query: #"""
+    public init(result: Result) {
+        self.result = result
+    }
+    
+    public static let transformer: JQ? = try! JQ(query: #"""
         .data | {
             items: [.item[]? | select(.linktype=="video") | {
                 title, cover_url: .cover, aid: (.param | tonumber),
