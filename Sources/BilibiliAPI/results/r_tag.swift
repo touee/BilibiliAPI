@@ -12,8 +12,8 @@ public struct TagDetailResult: APIResultContainer, ExtractableWithJQ {
     }
     
     public struct SimilarTagItem: Codable {
-        let tid: UInt64
-        let name :String
+        public let tid: UInt64
+        public let name :String
     }
     
     public init(result: Result) {
