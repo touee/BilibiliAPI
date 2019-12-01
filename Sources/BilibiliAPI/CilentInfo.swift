@@ -10,7 +10,7 @@ public struct ClientInfo {
     
     public let keys: APIKeys?
     
-    init(build: Int?, device: String?, mobiApp: String?, platform: String?, userAgent: String?, keys: APIKeys?) {
+    public init(build: Int?, device: String?, mobiApp: String?, platform: String?, userAgent: String?, keys: APIKeys?) {
         self.build = build
         self.device = device
         self.mobiApp = mobiApp

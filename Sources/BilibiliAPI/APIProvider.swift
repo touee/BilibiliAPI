@@ -28,8 +28,8 @@ public enum APIProviderError: Error {
 }
 
 public class APIProvider {
-    let fallbackKeys: APIKeys?
-    var clientInfos = [APISpec.PreferredClientType: [ClientInfo]]()
+    private let fallbackKeys: APIKeys?
+    private var clientInfos = [APISpec.PreferredClientType: [ClientInfo]]()
 
     public init(fallbackKeys: APIKeys? = nil) {
         self.fallbackKeys = fallbackKeys
