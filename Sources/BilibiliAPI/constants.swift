@@ -28,6 +28,12 @@ public enum SearchOrder: String, Codable {
     }
 }
 
+public enum UserSubmissionSearchOrder: String, Codable {
+    case pubdate = "pubdate" // default
+    case view = "click"
+    case favorite = "stow"
+}
+
 public enum SearchDuration: Int, Codable {
     case all = 0
     case lessThan10m = 1

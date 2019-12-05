@@ -15,6 +15,7 @@ final class BilibiliAPITests: XCTestCase {
             VideoRelatedVideosQuery(aid: 640001),
             VideoTagsQuery(aid: 2557),
             UserSubmissionsQuery(uid: 364812769, pageNumber: 2),
+            UserSubmissionSearchQuery(uid: 364812769, keyword: "", order: .pubdate, pageNumber: 1, pageSize: 20),
             UserFavoriteFolderListQuery(uid: 3621415),
             FavoriteFolderVideosQuery(uid: 3621415, fid: 1443151, pageNumber: nil),
             ] as [APIQuery] {
