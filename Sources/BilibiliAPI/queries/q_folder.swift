@@ -19,9 +19,9 @@ public struct FavoriteFolderVideosQuery: APIQuery, MultipageAPIQuery, APIQueryWi
     public static var spec = APISpec.forMobile(requiresKeys: false)
     public func buildQueryItems() -> [URLQueryItem] {
         return buildQueryItemArray(from: [
-            (name: "vmid",  value: String(uid)),
-            (name: "fid",   value: String(fid)),
-            (name: "pn",    value: String(fromOptional: pageNumber)),
+            (name: "vmid",  value: String(self.uid)),
+            (name: "fid",   value: String(self.fid)),
+            (name: "pn",    value: String(fromOptional: self.pageNumber)),
             ])
     }
 }

@@ -20,11 +20,11 @@ public struct SearchQuery: APIQuery, MultipageAPIQuery {
     public static var spec = APISpec.forMobile(requiresKeys: false)
     public func buildQueryItems() -> [URLQueryItem] {
         return buildQueryItemArray(from: [
-            (name: "keyword",   value: keyword),
-            (name: "order",     value: order?.rawValue),
-            (name: "duration",  value: String(fromOptional: duration?.rawValue)),
-            (name: "rid",       value: String(fromOptional: regionID)),
-            (name: "pn",        value: String(fromOptional: pageNumber)),
+            (name: "keyword",   value: self.keyword),
+            (name: "order",     value: self.order?.rawValue),
+            (name: "duration",  value: String(fromOptional: self.duration?.rawValue)),
+            (name: "rid",       value: String(fromOptional: self.regionID)),
+            (name: "pn",        value: String(fromOptional: self.pageNumber)),
             ])
     }
 }

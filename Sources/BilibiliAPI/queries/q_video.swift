@@ -15,7 +15,7 @@ public struct VideoInfoQuery: APIQuery, APIQueryWithAID {
     public static var spec = APISpec.forMobile(requiresKeys: true)
     public func buildQueryItems() -> [URLQueryItem] {
         return buildQueryItemArray(from: [
-            (name: "aid", value: String(aid)),
+            (name: "aid", value: String(self.aid)),
             ])
     }
 }
@@ -31,7 +31,7 @@ public struct VideoRelatedVideosQuery: APIQuery, APIQueryWithAID {
     public static var spec = APISpec.forBrowser(requiresKeys: false)
     public func buildQueryItems() -> [URLQueryItem] {
         return buildQueryItemArray(from: [
-            (name: "aid", value: String(aid)),
+            (name: "aid", value: String(self.aid)),
             ])
     }
 }
@@ -47,7 +47,7 @@ public struct VideoTagsQuery: APIQuery, APIQueryWithAID {
     public static var spec = APISpec.forBrowser(requiresKeys: false)
     public func buildQueryItems() -> [URLQueryItem] {
         return buildQueryItemArray(from: [
-            (name: "aid", value: String(aid)),
+            (name: "aid", value: String(self.aid)),
             ])
     }
 }

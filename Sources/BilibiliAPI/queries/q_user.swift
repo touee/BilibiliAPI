@@ -17,8 +17,8 @@ public struct UserSubmissionsQuery: APIQuery, MultipageAPIQuery, APIQueryWithUID
     public static var spec = APISpec.forMobile(requiresKeys: false)
     public func buildQueryItems() -> [URLQueryItem] {
         return buildQueryItemArray(from: [
-            (name: "vmid",  value: String(uid)),
-            (name: "pn",    value: String(fromOptional: pageNumber)),
+            (name: "vmid",  value: String(self.uid)),
+            (name: "pn",    value: String(fromOptional: self.pageNumber)),
             ])
     }
 }
@@ -34,7 +34,7 @@ public struct UserFavoriteFolderListQuery: APIQuery, APIQueryWithUID {
     public static var spec = APISpec.forMobile(requiresKeys: false)
     public func buildQueryItems() -> [URLQueryItem] {
         return buildQueryItemArray(from: [
-            (name: "vmid",  value: String(uid)),
+            (name: "vmid",  value: String(self.uid)),
             ])
     }
 }

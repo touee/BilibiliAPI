@@ -13,8 +13,8 @@ public struct TagTabInfoQuery: APIQuery {
     public static var spec = APISpec.forBrowser(requiresKeys: false)
     public func buildQueryItems() -> [URLQueryItem] {
         return buildQueryItemArray(from: [
-            (name: "tag_id",    value: String(fromOptional: tid)),
-            (name: "tag_name",  value: tagName),
+            (name: "tag_id",    value: String(fromOptional: self.tid)),
+            (name: "tag_name",  value: self.tagName),
             ])
     }
 }
@@ -36,8 +36,8 @@ public struct TagDetailQuery: APIQuery, MultipageAPIQuery, APIQueryWithTID {
     public static var spec = APISpec.forMobile(requiresKeys: false)
     public func buildQueryItems() -> [URLQueryItem] {
         return buildQueryItemArray(from: [
-            (name: "tag_id",    value: String(tid)),
-            (name: "pn",        value: String(fromOptional: pageNumber)),
+            (name: "tag_id",    value: String(self.tid)),
+            (name: "pn",        value: String(fromOptional: self.pageNumber)),
             ])
     }
 }
@@ -55,8 +55,8 @@ public struct TagTopQuery: APIQuery, MultipageAPIQuery, APIQueryWithTID {
     public static var spec = APISpec.forBrowser(requiresKeys: false)
     public func buildQueryItems() -> [URLQueryItem] {
         return buildQueryItemArray(from: [
-            (name: "tid",    value: String(tid)),
-            (name: "pn",        value: String(fromOptional: pageNumber)),
+            (name: "tid",    value: String(self.tid)),
+            (name: "pn",        value: String(fromOptional: self.pageNumber)),
             ])
     }
 }
