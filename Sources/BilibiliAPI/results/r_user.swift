@@ -46,7 +46,13 @@ public struct UserSubmissionSearchResult: APIResultContainer, ExtractableWithJQ 
     public let result: Result
     public struct Result: APIResult {
         public let total_count: Int
-        public let subregion_id_name_table: [Int: String]? // id -> name
+        public let region_id_name_table_raw: [String: String]? // id -> name
+        public var region_id_name_table: [Int: String]? {
+            return self.region_id_name_table_raw?
+                .reduce(into: [Int: String]()) {
+                    $0[Int($1.key)!] = $1.value
+            }
+        }
         public let submissions: [VideoItem]
     }
     public struct VideoItem: Codable {
@@ -78,13 +84,14 @@ public struct UserSubmissionSearchResult: APIResultContainer, ExtractableWithJQ 
     public static let transformer: JQ? = try! JQ(query: #"""
         .data | {
             total_count: .page.count,
-            subregion_id_name_table: (.list.tlist? | map ({ .tid: .name }) | add) // null,
-            submissions: [.list.vlist | {
-                .title, subregion_id: .typeid,
+            region_id_name_table_raw: ((.list.tlist? |
+                map ({ (.tid|tostring): .name }) | add) // null),
+            submissions: [.list.vlist[] | {
+                title, subregion_id: .typeid,
                 cover_url_without_scheme: .pic,
-                .aid, durationText: .length, view_count: .play,
+                aid, durationText: .length, view_count: .play,
                 danmaku_count: .video_review, reply_count: .comment,
-                publish_time: .created, .description,
+                publish_time: .created, description,
                 other_interesting_stuff: ({
                     review, bvid, hide_click, subtitle
                 } | @json)
