@@ -69,7 +69,7 @@ public struct UserSubmissionSearchResult: APIResultContainer, ExtractableWithJQ 
             if parts.count != 2 { fatalError() }
             return Int(parts[0])! * 60 + Int(parts[1])!
         }
-        public let view_count: Int
+        public let view_count: Int?
         public let danmaku_count: Int
         public let reply_count: Int
         public let publish_time: Int64
@@ -89,7 +89,8 @@ public struct UserSubmissionSearchResult: APIResultContainer, ExtractableWithJQ 
             submissions: [.list.vlist[] | {
                 title, subregion_id: .typeid,
                 cover_url_without_scheme: .pic,
-                aid, durationText: .length, view_count: .play,
+                aid, durationText: .length,
+                view_count: (if .play == "--" then null else .play end),
                 danmaku_count: .video_review, reply_count: .comment,
                 publish_time: .created, description,
                 other_interesting_stuff: ({
