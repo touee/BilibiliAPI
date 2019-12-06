@@ -51,7 +51,7 @@ public struct UserSubmissionSearchResult: APIResultContainer, ExtractableWithJQ 
     }
     public struct VideoItem: Codable {
         public let title: String
-        public let subregion_id: String
+        public let subregion_id: Int
         public let cover_url_without_scheme: String
         public var cover_url: String {
             return "http:" + cover_url_without_scheme
