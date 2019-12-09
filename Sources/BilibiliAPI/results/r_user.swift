@@ -84,8 +84,8 @@ public struct UserSubmissionSearchResult: APIResultContainer, ExtractableWithJQ 
     public static let transformer: JQ? = try! JQ(query: #"""
         .data | {
             total_count: .page.count,
-            region_id_name_table_raw: ((.list.tlist? |
-                map ({ (.tid|tostring): .name }) | add) // null),
+            region_id_name_table_raw: ((.list.tlist // [] |
+                map ({ (.tid|tostring): .name }) | add)),
             submissions: [.list.vlist[] | {
                 title, subregion_id: .typeid,
                 cover_url_without_scheme: .pic,
