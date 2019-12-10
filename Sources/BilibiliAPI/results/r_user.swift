@@ -54,6 +54,7 @@ public struct UserSubmissionSearchResult: APIResultContainer, ExtractableWithJQ 
             }
         }
         public let submissions: [VideoItem]
+        public let uploader_name: String?
     }
     public struct VideoItem: Codable {
         public let title: String
@@ -96,7 +97,8 @@ public struct UserSubmissionSearchResult: APIResultContainer, ExtractableWithJQ 
                 other_interesting_stuff: ({
                     review, bvid, hide_click, subtitle
                 } | @json)
-            }]
+            }],
+            uploader_name: .list.vlist[0].author
         }
         """#, usesLock: true)
 }
